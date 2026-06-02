@@ -43,6 +43,12 @@ runs:
       with:
         node-version: '20'
 
+    - name: Install action dependencies (fast-xml-parser)
+      shell: bash
+      run: |
+        cd "${{ github.action_path }}"
+        npm ci --omit=dev --no-audit --no-fund --prefer-offline
+
     - name: Install Bruno CLI
       shell: bash
       env:
